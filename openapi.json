@@ -1,0 +1,213 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API Service",
+    "version": "1.0.0",
+    "description": "API Service endpoints",
+    "contact": {
+      "email": "fadi1nasr@outlook.com",
+      "name": "Fadi Nasr"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "swenson he",
+      "description": "Swenson Spresso API"
+    }
+  ],
+  "paths": {
+    "/api/coffee-machines": {
+      "get": {
+        "tags": [
+          "Coffee Machine"
+        ],
+        "summary": "Get all Coffee Machines in database by Type",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "product_type",
+            "schema": {
+              "type": "string",
+              "enum": ["COFFEE_MACHINE_LARGE", "COFFEE_MACHINE_SMALL", "ESPRESSO_MACHINE"]
+            }
+          },
+          {
+            "in": "query",
+            "name": "water_line_compatible",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "operationId": "coffee-machines-get-all",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "coffeeMachine": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/CoffeeMachine"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "items": {
+                        "$ref": "#/components/schemas/Error"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/coffee-pods": {
+      "get": {
+        "tags": [
+          "Coffee Pod"
+        ],
+        "summary": "Get all Coffee Pods in database by Type",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "product_type",
+            "schema": {
+              "type": "string",
+              "enum": ["COFFEE_POD_LARGE", "COFFEE_POD_SMALL", "ESPRESSO_POD"]
+            }
+          },
+          {
+            "in": "query",
+            "name": "pack_size",
+            "schema": {
+              "type": "number",
+              "enum": [12, 36, 60, 84]
+            }
+          },
+          {
+            "in": "query",
+            "name": "coffee_flavor",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "COFFEE_FLAVOR_VANILLA", "COFFEE_FLAVOR_CARAMEL", "COFFEE_FLAVOR_PSL", "COFFEE_FLAVOR_MOCHA", "COFFEE_FLAVOR_HAZELNUT"
+              ]
+            }
+          }
+        ],
+        "operationId": "coffee-pods-get-all",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "coffeePods": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/CoffeePod"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CoffeeMachine": {
+        "type": "object",
+        "properties": {
+          "product_type": {
+            "type": "string",
+            "example": "COFFEE_MACHINE_SMALL"
+          },
+          "water_line_compatible": {
+            "type": "boolean",
+            "example": false
+          },
+          "refID": {
+            "type": "string",
+            "example": "CM001"
+          },
+          "description": {
+            "type": "string",
+            "example": "small machine, base model"
+          },
+          "_id": {
+            "type": "string",
+            "example": "5d7224d3b40b1a1a046697dd"
+          }
+        }
+      },
+      "CoffeePod": {
+        "type": "object",
+        "properties": {
+          "product_type": {
+            "type": "string",
+            "example": "COFFEE_POD_SMALL"
+          },
+          "pack_size": {
+            "type": "number",
+            "example": 36
+          },
+          "coffee_flavor": {
+            "type": "string",
+            "example": "COFFEE_FLAVOR_VANILLA"
+          },
+          "refID": {
+            "type": "string",
+            "example": "EP013"
+          },
+          "description": {
+            "type": "string",
+            "example": "espresso pod, 3 dozen, caramel"
+          },
+          "_id": {
+            "type": "string",
+            "example": "5d7224d3b40b1a1a046697dd"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Internal Server Error"
+          }
+        }
+      }
+    }
+  }
+}
