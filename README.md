@@ -41,7 +41,12 @@ $ npm run setup-actions
 
 ## III. Development
 
-### Start dev server
+### Start dev server locally
+```
+$ npm run dev-server
+```
+
+### Start dev server with mongodb as a service on docker
 Starting the dev server also starts MongoDB as a service in a docker container using the compose script at `docker-compose.dev.yml`.
 
 ```
@@ -68,7 +73,7 @@ $ npm run build && npm run start
 $ docker build -t api-server .
 $ docker run -t -i \
       --env NODE_ENV=production \
-      --env MONGO_URL=mongodb://host.docker.internal:27017/books \
+      --env MONGO_URL=mongodb://host.docker.internal:27017/swenson-presso \
       -p 3000:3000 \
       api-server
 ```
@@ -89,7 +94,7 @@ To edit environment variables, create a file with name `.env` and copy the conte
 |---|---|---|---|
 | NODE_ENV  | string  | `development` |API runtime environment. eg: `staging`  |
 |  PORT | number  | `3000` | Port to run the API server on |
-|  MONGO_URL | string  | `mongodb://localhost:27017/books` | URL for MongoDB |
+|  MONGO_URL | string  | `mongodb://localhost:27017/swenson-presso` | URL for MongoDB |
 
 ## Logging
 The application uses [winston](https://github.com/winstonjs/winston) as the default logger. The configuration file is at `src/logger.ts`.
