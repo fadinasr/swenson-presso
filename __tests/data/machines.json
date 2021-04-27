@@ -1,0 +1,9 @@
+[{"refID": "CM001", "description": "small machine, base model", "product_type": "COFFEE_MACHINE_SMALL", "water_line_compatible":  false},
+  {"refID": "CM002", "description": "small machine, premium model", "product_type": "COFFEE_MACHINE_SMALL", "water_line_compatible": false},
+  {"refID": "CM003", "description": "small machine, deluxe model, water line compatible", "product_type": "COFFEE_MACHINE_SMALL", "water_line_compatible":  true},
+  {"refID": "CM101", "description": "large machine, base model", "product_type": "COFFEE_MACHINE_LARGE", "water_line_compatible": false},
+  {"refID": "CM102", "description": "large machine, premium model, water line compatible", "product_type": "COFFEE_MACHINE_LARGE", "water_line_compatible":  true},
+  {"refID": "CM103", "description": "large machine, deluxe model, water line compatible", "product_type": "COFFEE_MACHINE_LARGE", "water_line_compatible": true},
+  {"refID": "EM001", "description": "espresso machine, base model", "product_type": "ESPRESSO_MACHINE", "water_line_compatible":  false},
+  {"refID": "EM002", "description": "espresso machine, premium model", "product_type": "ESPRESSO_MACHINE", "water_line_compatible":  false},
+  {"refID": "EM003", "description": "espresso machine, deluxe model, water line compatible", "product_type": "ESPRESSO_MACHINE", "water_line_compatible":  true}]
